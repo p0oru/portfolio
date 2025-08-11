@@ -18,7 +18,12 @@ export default function BackgroundFX() {
     return () => cancelAnimationFrame(raf)
   }, [])
 
-  return <div ref={ref} className={styles.bg} aria-hidden="true" />
+  return (
+    <>
+      <div ref={ref} className={styles.bg} aria-hidden="true" />
+      <div className={styles.stars} aria-hidden="true" />
+    </>
+  )
 }
 
 

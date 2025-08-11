@@ -7,6 +7,8 @@ import Projects from './pages/Projects'
 import BlogIndex from './pages/BlogIndex'
 import BlogPost from './pages/BlogPost'
 import Resume from './pages/Resume'
+import ProjectDetail from './pages/ProjectDetail'
+import Skills from './pages/Skills'
 
 function App() {
   return (
@@ -17,9 +19,11 @@ function App() {
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="projects" element={<Projects />} />
+            <Route path="projects/:slug" element={<ProjectDetail />} />
             <Route path="blog" element={<BlogIndex />} />
             <Route path="blog/:slug" element={<BlogPost />} />
             <Route path="resume" element={<Resume />} />
+            <Route path="skills" element={<Skills />} />
           </Route>
         </Routes>
       </AnimatePresence>
