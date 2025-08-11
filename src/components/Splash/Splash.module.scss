@@ -1,0 +1,22 @@
+.overlay {
+  position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center;
+}
+.bg {
+  position: absolute; inset: 0; filter: blur(0.4px);
+  background:
+    radial-gradient(900px 500px at 20% 0%, rgba(56,189,248,0.24), transparent),
+    radial-gradient(900px 500px at 80% 100%, rgba(107,91,255,0.24), transparent),
+    rgba(5,5,16,0.95);
+}
+.card {
+  position: relative; padding: 28px 32px; border-radius: 18px; text-align: center; min-width: min(560px, 92vw);
+}
+.logoRow { display: inline-flex; align-items: baseline; gap: 10px; font-family: Orbitron, Inter, system-ui, sans-serif; font-size: clamp(28px, 5vw, 42px); }
+.logoMark { color: var(--primary-2); filter: drop-shadow(0 0 12px rgba(56,189,248,0.7)); }
+.tagline { color: var(--muted); margin-top: 8px; }
+.progress { height: 6px; background: rgba(255,255,255,0.08); border-radius: 999px; overflow: hidden; margin-top: 18px; }
+.bar { height: 100%; width: 0%; background: linear-gradient(90deg, #6b5bff, #38bdf8); animation: load 1.8s ease forwards; }
+
+@keyframes load { to { width: 100%; } }
+
+

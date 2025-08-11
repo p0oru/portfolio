@@ -1,0 +1,110 @@
+import {
+  SiNextdotjs,
+  SiReact,
+  SiTypescript,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiExpress,
+  SiFastapi,
+  SiMongodb,
+  SiMysql,
+  SiFirebase,
+  SiSupabase,
+  SiAwsamplify,
+  SiDocker,
+  SiGithub,
+  SiFigma,
+  SiVite,
+  SiPostman,
+  SiHtml5,
+  SiCss3,
+  SiJavascript,
+  SiPython,
+  
+  SiMui,
+  SiFramer,
+  SiReactrouter,
+  SiOpenai,
+  SiGoogle,
+  SiJsonwebtokens,
+} from 'react-icons/si'
+import { FaBrain, FaUsers, FaClock, FaSitemap, FaDatabase, FaUserShield } from 'react-icons/fa'
+
+export const skillCategories = [
+  {
+    title: 'Programming Languages',
+    description: 'Foundation I build on day‑to‑day',
+    items: [
+      { label: 'Python', Icon: SiPython },
+      { label: 'Java', Icon: FaDatabase },
+      { label: 'JavaScript', Icon: SiJavascript },
+      { label: 'HTML5', Icon: SiHtml5 },
+      { label: 'CSS3', Icon: SiCss3 },
+    ],
+  },
+  {
+    title: 'Core Technologies',
+    description: 'Primary technologies I use for building modern web applications',
+    items: [
+      { label: 'Next.js', Icon: SiNextdotjs },
+      { label: 'React.js', Icon: SiReact },
+      { label: 'TypeScript', Icon: SiTypescript },
+      { label: 'Tailwind CSS', Icon: SiTailwindcss },
+      { label: 'Material UI', Icon: SiMui },
+      { label: 'React Router', Icon: SiReactrouter },
+      { label: 'Framer Motion', Icon: SiFramer },
+      { label: 'Vite', Icon: SiVite },
+    ],
+  },
+  {
+    title: 'Backend & Cloud',
+    description: 'Technologies for server-side development and cloud services',
+    items: [
+      { label: 'Node.js', Icon: SiNodedotjs },
+      { label: 'Express', Icon: SiExpress },
+      { label: 'FastAPI', Icon: SiFastapi },
+      { label: 'MongoDB', Icon: SiMongodb },
+      { label: 'MySQL', Icon: SiMysql },
+      { label: 'Firebase', Icon: SiFirebase },
+      { label: 'Supabase', Icon: SiSupabase },
+      { label: 'AWS', Icon: SiAwsamplify },
+    ],
+  },
+  {
+    title: 'AI & Data',
+    description: 'AI integrations and data practices I use in projects',
+    items: [
+      { label: 'OpenAI', Icon: SiOpenai },
+      { label: 'Google Gemini', Icon: SiGoogle },
+      { label: 'RAG Architecture', Icon: FaDatabase },
+      { label: 'ChromaDB', Icon: FaDatabase },
+      { label: 'Prompt Engineering', Icon: FaBrain },
+      { label: 'REST APIs', Icon: SiPostman },
+      { label: 'JWT Auth', Icon: SiJsonwebtokens },
+      { label: 'RBAC', Icon: FaUserShield },
+    ],
+  },
+  {
+    title: 'Development Tools',
+    description: 'Essential tools for development workflow and deployment',
+    items: [
+      { label: 'Docker', Icon: SiDocker },
+      { label: 'GitHub', Icon: SiGithub },
+      { label: 'Postman', Icon: SiPostman },
+      { label: 'Figma', Icon: SiFigma },
+      { label: 'REST APIs', Icon: SiPostman },
+    ],
+  },
+  {
+    title: 'Professional Skills',
+    description: 'Soft skills and competencies that enhance engineering work',
+    items: [
+      { label: 'Problem Solving', Icon: FaBrain, note: 'Break complex challenges into shippable steps' },
+      { label: 'Team Collaboration', Icon: FaUsers, note: 'Clear communication and helpful reviews' },
+      { label: 'Time Management', Icon: FaClock, note: 'Plan, prioritize, and deliver reliably' },
+      { label: 'System Design', Icon: FaSitemap, note: 'Scalable, maintainable architectures' },
+    ],
+  },
+]
+
+

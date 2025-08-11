@@ -2,12 +2,16 @@ import { Outlet, NavLink } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
 import styles from './Layout.module.scss'
+import Splash from '../Splash/Splash'
+import MouseHalo from '../MouseHalo/MouseHalo'
 import BackgroundFX from '../BackgroundFX'
 
 export default function Layout() {
   return (
     <div className={styles.shell}>
       <BackgroundFX />
+      <Splash />
+      <MouseHalo />
       <header className={styles.header}>
         <div className="container" style={{ display: 'flex', alignItems: 'center' }}>
           <NavLink to="/" className={styles.logo}>

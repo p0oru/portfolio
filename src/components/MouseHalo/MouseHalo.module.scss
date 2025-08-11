@@ -1,0 +1,19 @@
+.halo {
+  position: fixed;
+  pointer-events: none;
+  inset: 0;
+  z-index: 0; /* Behind content */
+  --r: 500px; /* initial small radius */
+  --opacity: 0.07;
+  background: radial-gradient(
+    circle var(--r) at var(--mx, -200px) var(--my, -200px),
+    rgba(255,255,255,var(--opacity)),
+    rgba(240, 19, 19, 0) 60%
+  );
+  transition: background-position 60ms linear, opacity 120ms ease;
+  opacity: 0.9;
+}
+.halo[data-dim='1'] {
+  --opacity: 0.03; /* dim when over interactive elements */
+}
+

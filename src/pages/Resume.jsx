@@ -1,14 +1,16 @@
 import styles from './Resume.module.scss'
+// Import the docx as a file URL (Vite will handle it in build)
+import resumeUrl from '../../Resume_Puru_Singh.docx?url'
 
 export default function Resume() {
   return (
     <div className="container">
-      <section className={'glass ' + styles.wrap}>
+      <section className={'glass grain ' + styles.wrap}>
         <h1>Resume</h1>
         <p className="mb-16">Download my complete resume below.</p>
         <div className={styles.actions}>
-          {/* Non-functional button for now */}
-          <button className="btn" type="button" onClick={(e) => e.preventDefault()}>Download PDF</button>
+          {/* Direct download of the attached DOCX asset */}
+          <a className="btn" href={resumeUrl} download="Puru_Singh_Resume.docx">Download Resume</a>
         </div>
         <div className={styles.timeline}>
           <div className={styles.item}>
@@ -35,7 +37,7 @@ export default function Resume() {
         </div>
 
         <div className="mt-40" />
-        <section className={'glass'} style={{ padding: 18, borderRadius: 14 }}>
+        <section className={'glass grain'} style={{ padding: 18, borderRadius: 14 }}>
           <h3>Certifications & Achievements</h3>
           <ul>
             <li>Dean’s List – Fall 2024, ASU</li>
@@ -49,7 +51,7 @@ export default function Resume() {
         </section>
 
         <div className="mt-24" />
-        <section className={'glass'} style={{ padding: 18, borderRadius: 14 }}>
+        <section className={'glass grain'} style={{ padding: 18, borderRadius: 14 }}>
           <h3>Community Involvement</h3>
           <ul>
             <li>Indo Science Trust & ISRO collaboration — Balloon Satellite mission volunteer and presenter.</li>
