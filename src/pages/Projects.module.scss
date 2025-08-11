@@ -1,0 +1,14 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+@media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+
+.card { overflow: hidden; border-radius: var(--radius); display: grid; grid-template-rows: 180px auto; }
+.thumb { background: linear-gradient(135deg, rgba(107,91,255,0.5), rgba(56,189,248,0.5)); }
+.meta { padding: 16px; }
+.tags { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+
+

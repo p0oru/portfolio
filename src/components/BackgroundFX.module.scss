@@ -1,0 +1,14 @@
+.bg {
+  position: fixed;
+  inset: -10% -10% 0 -10%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(600px 300px at calc(20% + 10% * sin(var(--t))) 10%, rgba(56,189,248,0.18), transparent),
+    radial-gradient(800px 400px at calc(80% + 8% * cos(var(--t))) 0%, rgba(107,91,255,0.18), transparent),
+    radial-gradient(1000px 500px at 50% calc(100% - 40px), rgba(144,97,249,0.12), transparent);
+  filter: blur(0.5px) saturate(110%);
+  transition: background 100ms linear;
+}
+
+

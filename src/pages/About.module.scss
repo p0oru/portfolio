@@ -1,0 +1,7 @@
+.wrap { padding: 28px; }
+.rows { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 18px; }
+@media (max-width: 860px) { .rows { grid-template-columns: 1fr; } }
+.card { padding: 18px; }
+.card ul { margin: 0; padding-left: 18px; }
+
+
