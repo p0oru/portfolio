@@ -20,30 +20,41 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Detect project directory (repo root or /web)
+      - id: detect
+        name: Detect project directory
+        run: |
+          if [ -f web/package.json ]; then
+            echo "dir=web" >> $GITHUB_OUTPUT
+          else
+            echo "dir=." >> $GITHUB_OUTPUT
+          fi
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
-          cache-dependency-path: web/package-lock.json
+          cache: npm
+          # Cache both common locations to avoid path resolution errors
+          cache-dependency-path: |
+            package-lock.json
+            web/package-lock.json
 
       - name: Install deps
-        run: |
-          cd web
-          npm ci
+        working-directory: ${{ steps.detect.outputs.dir }}
+        run: npm ci
 
       - name: Build
-        run: |
-          cd web
-          npm run build
+        working-directory: ${{ steps.detect.outputs.dir }}
+        run: npm run build
 
-      - name: Add 404.html for SPA (BrowserRouter)
+      - name: Add 404.html for SPA
         run: |
-          cp web/dist/index.html web/dist/404.html
+          cp ${{ steps.detect.outputs.dir }}/dist/index.html ${{ steps.detect.outputs.dir }}/dist/404.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: web/dist
+          path: ${{ steps.detect.outputs.dir }}/dist
 
   deploy:
     environment:
@@ -54,6 +65,5 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
-
 
 
