@@ -10,3 +10,4 @@ I’m a CS student at Arizona State University. I love building full‑stack and
 On this site you’ll find short showcases of my projects (Agentic Food, Agentic Book, and an AI dashboard for hospitality), notes on what I’m learning, and a resume that I keep up to date. If something resonates, reach out at [psing176@asu.edu](mailto:psing176@asu.edu).
 
 
+
