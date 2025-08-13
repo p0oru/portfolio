@@ -103,7 +103,7 @@ export const projects = [
   },
   {
     slug: 'agentic-ai-dashboard',
-    title: 'Stayora — Hospitality Analytics',
+    title: 'Hospitality Analytics',
     blurb: 'AI‑powered analytics for hotels: text‑to‑SQL, RAG over metrics and reviews, and role‑aware dashboards.',
     description:
       'A full‑stack platform that turns hotel data and guest reviews into actionable insights. Features text‑to‑SQL analytics, RAG‑grounded chat, review intelligence via FastAPI, and dashboards for GM/Owner/Finance roles.',
@@ -132,6 +132,100 @@ export const projects = [
       },
     ],
     tech: ['React', 'Vite', 'Tailwind', 'Node.js', 'Express', 'MySQL', 'OpenAI', 'ChromaDB', 'FastAPI', 'OAuth'],
+    links: { github: '', live: '' },
+    cover: '',
+  },
+  {
+    slug: 'whatsapp-rag',
+    title: 'WhatsApp RAG — Fully Local Retrieval‑Augmented Generation on Windows',
+    blurb:
+      'Private, fully local Q&A over WhatsApp chats: parser → chunker → embeddings → Chroma → optional reranker → llama.cpp LLM → Gradio UI with inline citations.',
+    description:
+      'End‑to‑end local RAG system for WhatsApp group chat exports. Parses raw logs to JSONL, builds a Chroma vector index with local embeddings, optionally reranks with a local cross‑encoder, and answers with a local LLM. Nothing leaves the machine. Tested on Windows 10/11 with RTX 4060 (8GB VRAM).',
+    bullets: [
+      'Accurate WhatsApp parser with Unicode‑safe timestamps, system‑message filtering, and multi‑line merging',
+      'Conversational chunking that preserves topic coherence and tracks inline citations',
+      'Local embeddings (BAAI/bge‑large‑en‑v1.5) + ChromaDB persistence; optional cross‑encoder reranking',
+      'Local LLM via llama‑cpp‑python (Llama 3.1 8B GGUF) with grounded, cited answers in 2–3 sentences',
+    ],
+    sections: [
+      {
+        title: 'Architecture',
+        items: [
+          'Data: WhatsApp .txt → normalized JSONL (one message per line)',
+          'Indexing: JSONL → conversational chunks → embeddings → Chroma persistent store (citations in metadata)',
+          'Retrieval: embed query → retrieve top‑k → optional cross‑encoder rerank',
+          'Generation: grounded prompt → local LLM answers concisely with inline citations',
+          'Presentation: Gradio UI with citations list and collapsible top contexts',
+        ],
+      },
+      {
+        title: 'Data Pipeline & Parsing',
+        items: [
+          'Regex handles M/D/YY(YY), 12‑hour am/pm, Unicode thin/nb spaces, varied dash styles',
+          'Skips system messages (E2EE, created/added/removed, icon/subject changes, joins, etc.)',
+          'Multi‑line handling: lines without timestamps append to previous message',
+          'Normalization: dates → MM/DD/YY; times → H:MM AM/PM; sender aliasing and exclusions',
+          'Output: JSONL with date, time, sender, text',
+        ],
+      },
+      {
+        title: 'Indexing & Vector Store',
+        items: [
+          'Chunking favors same‑sender runs; ~2000 chars / ~500 tokens hard limits',
+          'Embeddings: SentenceTransformers BAAI/bge‑large‑en‑v1.5 (cosine; normalized vectors)',
+          'Chroma PersistentClient (HNSW, cosine); anonymized telemetry disabled',
+          'Stores citations in metadata; batched add/delete to avoid duplicates',
+          'Controls: --limit_messages, --limit_chunks, --batch_size, --chunk_chars, --chunk_tokens, --recreate, --dry_run, --chroma_batch_size',
+        ],
+      },
+      {
+        title: 'Retrieval & Answering',
+        items: [
+          'Top‑k retrieval (default 6) with same embedder; optional rerank via cross‑encoder/ms‑marco‑MiniLM‑L‑6‑v2',
+          'Instruction enforces grounded, 2–3 sentence answers with inline citations or explicit “don’t know”',
+          'Local inference via llama‑cpp‑python (configurable ctx, gpu_layers, temperature)',
+          'Output cleaned to remove repetition; “Answer”, “Citations”, and collapsible “Top Contexts” sections',
+        ],
+      },
+      {
+        title: 'UI & CLI',
+        items: [
+          'Gradio app: question input, Markdown answer+citation output, minor CSS for readability',
+          'CLI mode: --cli and --query for one‑shot or interactive Q&A with context previews',
+          'Run: parse → ingest → start app at http://127.0.0.1:7860',
+        ],
+      },
+      {
+        title: 'Setup (Windows)',
+        items: [
+          'Python 3.10/3.11, CUDA 12.1/12.2, VS Build Tools, Git, latest NVIDIA driver',
+          'Install requirements; install PyTorch and llama‑cpp‑python matching CUDA',
+          'Models via huggingface‑cli into models/llm, models/embed, models/reranker',
+          'Steps: 1) Parse chat → index/parsed_messages.jsonl  2) Ingest → index/chroma  3) Run Gradio app',
+        ],
+      },
+      {
+        title: 'Why it’s portfolio‑worthy',
+        items: [
+          'Fully local by design: privacy‑first with no network calls during retrieval/inference',
+          'Robust WhatsApp parsing, coherent conversational chunking, and end‑to‑end citation surfacing',
+          'Runs comfortably on 8GB VRAM GPUs; deterministic formatting and transparent verification UX',
+        ],
+      },
+    ],
+    tech: [
+      'Python',
+      'ChromaDB',
+      'SentenceTransformers',
+      'BAAI/bge‑large‑en‑v1.5',
+      'Cross‑Encoder ms‑marco‑MiniLM‑L‑6‑v2',
+      'llama‑cpp‑python',
+      'Llama 3.1 8B GGUF',
+      'Gradio',
+      'CUDA 12.1/12.2',
+      'NVIDIA RTX',
+    ],
     links: { github: '', live: '' },
     cover: '',
   },
