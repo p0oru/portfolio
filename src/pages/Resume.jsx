@@ -17,7 +17,7 @@ export default function Resume() {
             <div className={styles.pill}>2024 — Present</div>
             <div>
               <h3>B.S. Computer Science · Arizona State University</h3>
-              <p>GPA: 3.2 · Dean’s List (Fall 2024). Expected graduation: Fall 2028.</p>
+              <p>GPA: 3.8 · Dean’s List (Fall 2024). Expected graduation: Fall 2028.</p>
             </div>
           </div>
           <div className={styles.item}>

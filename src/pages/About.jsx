@@ -10,7 +10,7 @@ export default function About() {
         <div className={styles.layout}>
           <div>
             <h1>About Me</h1>
-            <p className="mb-16">I’m Puru Singh, a Computer Science student at Arizona State University (GPA 3.2; Dean’s List Fall 2024). I build full‑stack and AI‑powered apps that streamline workflows and elevate UX. I enjoy mentoring peers and contributing to campus and community projects.</p>
+            <p className="mb-16">I’m Puru Singh, a Computer Science student at Arizona State University (GPA 3.8; Dean’s List Fall 2024). I build full‑stack and AI‑powered apps that streamline workflows and elevate UX. I enjoy mentoring peers and contributing to campus and community projects.</p>
 
             <motion.section className={styles.section}
               initial={{opacity:0, y:12}}
@@ -22,7 +22,7 @@ export default function About() {
               <ul className={styles.facts}>
                 <li className="chip" title="Tempe, Arizona">Tempe, AZ (MST)</li>
                 <li className="chip" title="Graduation term">B.S. CS — Fall 2028</li>
-                <li className="chip" title="GPA">GPA 3.2</li>
+                <li className="chip" title="GPA">GPA 3.8</li>
                 <li className="chip" title="Dean’s List">Dean’s List — Fall 2024</li>
                 <li className="chip" title="Availability">Open to on‑campus tech roles</li>
               </ul>
