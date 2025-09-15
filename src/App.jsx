@@ -12,7 +12,7 @@ import Skills from './pages/Skills'
 
 function App() {
   return (
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
+    <BrowserRouter>
       <AnimatePresence mode="wait">
         <Routes>
           <Route element={<Layout />}> 
