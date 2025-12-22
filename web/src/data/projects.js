@@ -68,7 +68,7 @@ export const projects = [
         ],
       },
       {
-        title: 'Why it's portfolio‑worthy',
+        title: "Why it's portfolio‑worthy",
         items: [
           'Demonstrates full-stack expertise: Complete application from database design to UI',
           'Advanced AI integration: Successfully integrated multiple AI models with context-aware generation',
@@ -158,7 +158,7 @@ export const projects = [
         ],
       },
       {
-        title: 'Why it's portfolio‑worthy',
+        title: "Why it's portfolio‑worthy",
         items: [
           'Production-ready platform: Handles real luxury hotel data (CHF 45M+ annual revenue)',
           'Hybrid architecture: Successfully combines relational (MySQL) and vector (ChromaDB) databases',
@@ -242,7 +242,7 @@ export const projects = [
         ],
       },
       {
-        title: 'Why it’s portfolio‑worthy',
+        title: "Why it's portfolio‑worthy",
         items: [
           'Fully local by design: privacy‑first with no network calls during retrieval/inference',
           'Robust WhatsApp parsing, coherent conversational chunking, and end‑to‑end citation surfacing',
