@@ -3,7 +3,7 @@
 .timeline { display: grid; gap: 16px; }
 .item { display: grid; grid-template-columns: 160px 1fr; gap: 16px; align-items: start; padding: 16px; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; }
 @media (max-width: 700px) { .item { grid-template-columns: 1fr; } }
-.pill { display: inline-flex; align-items: center; justify-content: center; height: 34px; padding: 0 12px; border-radius: 999px; background: linear-gradient(90deg, rgba(107,91,255,0.5), rgba(56,189,248,0.5)); }
+.pill { display: inline-flex; align-items: center; justify-content: center; height: 34px; padding: 0 12px; border-radius: 999px; background: linear-gradient(90deg, rgba(107,91,255,0.5), rgba(56,189,248,0.5)); white-space: nowrap; }
 
 
 
