@@ -50,10 +50,6 @@ jobs:
         working-directory: ${{ steps.detect.outputs.dir }}
         run: npm run build
 
-      - name: Add 404.html for SPA
-        run: |
-          cp ${{ steps.detect.outputs.dir }}/dist/index.html ${{ steps.detect.outputs.dir }}/dist/404.html
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -62,11 +58,8 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     needs: build
     runs-on: ubuntu-latest
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
-
-
