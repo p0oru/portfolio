@@ -1,4 +1,4 @@
-import { HashRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import Layout from './components/Layout/Layout'
 import Home from './pages/Home'
@@ -12,7 +12,7 @@ import Skills from './pages/Skills'
 
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <AnimatePresence mode="wait">
         <Routes>
           <Route element={<Layout />}> 
@@ -27,7 +27,7 @@ function App() {
           </Route>
         </Routes>
       </AnimatePresence>
-    </HashRouter>
+    </BrowserRouter>
   )
 }
 

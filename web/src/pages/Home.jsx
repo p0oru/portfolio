@@ -60,7 +60,7 @@ export default function Home() {
       <motion.section className="mt-40" initial={{opacity:0,y:12}} whileInView={{opacity:1,y:0}} viewport={{once:true, amount:.2}} transition={{duration:.5}}>
         <h2 className="mb-16">Featured Projects</h2>
         <div className={styles.projectGrid}>
-          {data.slice(0,3).map((p)=> (
+          {data.filter(p => ['stayora', 'domainflow', 'rce-engine'].includes(p.slug)).map((p)=> (
             <Link key={p.slug} to={`/projects/${p.slug}`} className={styles.projectCard + ' glass'}>
               <div className={styles.projectThumb}><div className={styles.thumbOverlay} /></div>
               <div className={styles.projectMeta}>
