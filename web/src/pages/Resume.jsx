@@ -1,6 +1,26 @@
+import { motion } from 'framer-motion'
+import { FaUniversity, FaCode, FaGamepad, FaMobileAlt, FaTrophy, FaCheckCircle } from 'react-icons/fa'
+import { SiAmazonaws as SiAWS, SiCoursera, SiJavascript } from 'react-icons/si'
 import styles from './Resume.module.scss'
 // Import the docx as a file URL (Vite will handle it in build)
 import resumeUrl from '../../Resume_Puru_Singh.docx?url'
+
+const certifications = [
+  { title: "Dean's List", subtitle: 'Fall 2024, ASU', Icon: FaUniversity, year: '2024' },
+  { title: 'Programming with JavaScript', subtitle: 'Meta (Coursera)', Icon: SiJavascript, year: '2024' },
+  { title: 'Cloud Skills', subtitle: 'AWS Cloud Practitioner', Icon: SiAWS, year: '2024' },
+  { title: 'App Development Certification', subtitle: 'WhiteHatJR', Icon: FaMobileAlt, year: '2022' },
+  { title: 'Full Stack Development & AI', subtitle: 'WhiteHatJR', Icon: FaCode, year: '2022' },
+  { title: 'Game Development Certification', subtitle: 'WhiteHatJR', Icon: FaGamepad, year: '2022' },
+  { title: 'Website Development Internship', subtitle: 'Lunablaze', Icon: FaCode, year: '2023' },
+  { title: 'IQube Distinction', subtitle: 'All India Rank 213', Icon: FaTrophy, year: '2016-17' },
+]
+
+const communityItems = [
+  'Indo Science Trust & ISRO collaboration — Balloon Satellite mission volunteer and presenter.',
+  'Local community initiatives — food distribution, campus clean‑up, and awareness campaigns.',
+  'Student mentor — helped peers with coding challenges and project development.',
+]
 
 export default function Resume() {
   return (
@@ -10,14 +30,18 @@ export default function Resume() {
         <p className="mb-16">Download my complete resume below.</p>
         <div className={styles.actions}>
           {/* Direct download of the attached DOCX asset */}
-          <a className="btn" href={resumeUrl} download="Puru_Singh_Resume.docx">Download Resume</a>
+          <a className={styles.downloadBtn} href={resumeUrl} download="Puru_Singh_Resume.docx">
+            Download Resume
+          </a>
         </div>
+
+        {/* Experience Timeline - Full Width */}
         <div className={styles.timeline}>
           <div className={styles.item}>
             <div className={styles.pill}>2024 — Present</div>
             <div>
               <h3>B.S. Computer Science · Arizona State University</h3>
-              <p>GPA: 3.8 · Dean’s List (Fall 2024). Expected graduation: Fall 2028.</p>
+              <p>GPA: 3.8 · Dean's List (Fall 2024). Expected graduation: Fall 2028.</p>
             </div>
           </div>
           <div className={styles.item}>
@@ -36,29 +60,63 @@ export default function Resume() {
           </div>
         </div>
 
-        <div className="mt-40" />
-        <section className={'glass grain'} style={{ padding: 18, borderRadius: 14 }}>
-          <h3>Certifications & Achievements</h3>
-          <ul>
-            <li>Dean’s List – Fall 2024, ASU</li>
-            <li>Programming with JavaScript – Meta (Coursera, 2024)</li>
-            <li>Website Development Internship – Lunablaze (2023)</li>
-            <li>Full Stack Development & AI App Development – WhiteHatJR (2022)</li>
-            <li>Game Development Certification – WhiteHatJR (2022)</li>
-            <li>App Development Certification – WhiteHatJR (2022)</li>
-            <li>IQube Distinction – All India Rank 213 (2016–17)</li>
-          </ul>
-        </section>
+        {/* 2-Column Grid: Certifications & Community */}
+        <div className={styles.gridSection}>
+          {/* Left Column: Certifications & Awards */}
+          <motion.section
+            className={styles.column}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <h3 className={styles.sectionTitle}>Certifications & Awards</h3>
+            <div className={styles.certificationsGrid}>
+              {certifications.map((cert, idx) => (
+                <motion.div
+                  key={idx}
+                  className={styles.certCard}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: 0.2 + idx * 0.05 }}
+                  whileHover={{ scale: 1.02 }}
+                >
+                  <div className={styles.certIcon}>
+                    <cert.Icon />
+                  </div>
+                  <div className={styles.certContent}>
+                    <div className={styles.certTitle}>{cert.title}</div>
+                    <div className={styles.certSubtitle}>{cert.subtitle}</div>
+                    <div className={styles.certYear}>{cert.year}</div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.section>
 
-        <div className="mt-24" />
-        <section className={'glass grain'} style={{ padding: 18, borderRadius: 14 }}>
-          <h3>Community Involvement</h3>
-          <ul>
-            <li>Indo Science Trust & ISRO collaboration — Balloon Satellite mission volunteer and presenter.</li>
-            <li>Local community initiatives — food distribution, campus clean‑up, and awareness campaigns.</li>
-            <li>Student mentor — helped peers with coding challenges and project development.</li>
-          </ul>
-        </section>
+          {/* Right Column: Community & Leadership */}
+          <motion.section
+            className={styles.column}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <h3 className={styles.sectionTitle}>Community & Leadership</h3>
+            <ul className={styles.communityList}>
+              {communityItems.map((item, idx) => (
+                <motion.li
+                  key={idx}
+                  className={styles.communityItem}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: 0.3 + idx * 0.05 }}
+                >
+                  <FaCheckCircle className={styles.checkIcon} />
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.section>
+        </div>
       </section>
     </div>
   )

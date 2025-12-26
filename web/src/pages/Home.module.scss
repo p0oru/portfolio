@@ -4,14 +4,105 @@
   grid-template-columns: 1.2fr 1fr;
   gap: 28px;
   padding: 28px;
+  align-items: center;
 }
 @media (max-width: 860px) { .hero { grid-template-columns: 1fr; } }
 
-.heroContent {}
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.socialBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 20px;
+  width: fit-content;
+  transition: all 0.3s ease;
+}
+.socialBadge:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
 .gradient { background: linear-gradient(90deg, #6b5bff, #38bdf8); -webkit-background-clip: text; color: transparent; }
 .subtitle { color: var(--muted); margin-top: 6px; max-width: 60ch; }
-.ctaRow { display: flex; gap: 12px; margin-top: 16px; }
-.ctaSecondary { display: inline-flex; align-items: center; padding: 12px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.12); }
+.ctaRow { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 24px;
+  border-radius: 12px;
+  background: #00f0ff;
+  color: #000;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 240, 255, 0.3);
+}
+.ctaPrimary:hover {
+  background: #00d9e6;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0, 240, 255, 0.4);
+}
+.ctaSecondary { 
+  display: inline-flex; 
+  align-items: center; 
+  padding: 12px 16px; 
+  border-radius: 12px; 
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.ctaSecondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.techStack {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.techLabel {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.techIcons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.techIcons svg {
+  width: 24px;
+  height: 24px;
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.3s ease;
+}
+
+.techIcons svg:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
 .skills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; padding-left: 0; list-style: none; }
 
 .heroArt { position: relative; min-height: 260px; }
