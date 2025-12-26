@@ -2,8 +2,10 @@
   position: relative;
   overflow: hidden;
   border-radius: var(--radius);
-  display: grid;
-  grid-template-rows: 180px auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 400px;
   transform-style: preserve-3d;
   filter: saturate(92%) brightness(0.92);
   backface-visibility: hidden;
@@ -37,20 +39,25 @@
 }
 
 .thumb { 
-  background: linear-gradient(135deg, rgba(107,91,255,0.5), rgba(56,189,248,0.5)); 
+  background: linear-gradient(135deg, rgba(107,91,255,0.5), rgba(56,189,248,0.5));
+  height: 180px;
+  flex-shrink: 0;
 }
 
 .meta { 
-  padding: 20px; 
+  padding: 24px; 
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
+  flex-grow: 1;
 }
 
 .meta h3 { 
   color: #dbe3ff; 
   transition: color 260ms ease, text-shadow 260ms ease;
   margin: 0;
+  line-height: 1.4;
+  margin-bottom: 4px;
 }
 
 .meta h3 a {
@@ -68,28 +75,32 @@
   font-size: 14px;
   font-weight: 600;
   margin: 0;
-  margin-top: -4px;
+  line-height: 1.5;
+  margin-bottom: 8px;
 }
 
 .description {
   color: rgba(255, 255, 255, 0.7);
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.7;
   margin: 0;
   flex-grow: 1;
+  margin-bottom: 8px;
 }
 
 .tags { 
   display: flex; 
   gap: 8px; 
   margin-top: 4px;
+  margin-bottom: 4px;
   flex-wrap: wrap; 
 }
 
 .actions {
   display: flex;
   gap: 8px;
-  margin-top: 12px;
+  margin-top: auto;
+  padding-top: 8px;
   flex-wrap: wrap;
 }
 
@@ -160,4 +171,5 @@
   border-color: rgba(255, 255, 255, 0.2);
   transform: translateY(-1px);
 }
+
 

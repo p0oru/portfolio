@@ -18,7 +18,7 @@ export default function Tilt({ children, max = 6 }) {
         if (!el) return
         el.style.transform = ''
       }}
-      style={{ transition: 'transform 160ms ease', transformStyle: 'preserve-3d' }}
+      style={{ transition: 'transform 160ms ease', transformStyle: 'preserve-3d', height: '100%' }}
     >
       {children}
     </div>

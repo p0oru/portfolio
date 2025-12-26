@@ -29,7 +29,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            🏆 ASU Dean's List (Fall 2024) • 3.8 GPA
+            ASU Dean's List • 3.6 GPA
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}

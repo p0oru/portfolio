@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { FaUniversity, FaCode, FaGamepad, FaMobileAlt, FaTrophy, FaCheckCircle } from 'react-icons/fa'
-import { SiAmazonaws as SiAWS, SiCoursera, SiJavascript } from 'react-icons/si'
+import { SiAmazon as SiAWS, SiCoursera, SiJavascript } from 'react-icons/si'
 import styles from './Resume.module.scss'
 // Import the docx as a file URL (Vite will handle it in build)
 import resumeUrl from '../../Resume_Puru_Singh.docx?url'

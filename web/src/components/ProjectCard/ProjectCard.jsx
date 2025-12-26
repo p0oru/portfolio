@@ -1,13 +1,13 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
 import styles from './ProjectCard.module.scss'
 
 export default function ProjectCard({ project }) {
+  const navigate = useNavigate()
+
   const handleViewDetails = (e) => {
     e.preventDefault()
-    // TODO: Open modal/drawer with project details
-    // For now, navigate to detail page
-    window.location.href = `/projects/${project.slug}`
+    navigate(`/projects/${project.slug}`)
   }
 
   const handleContact = (e) => {
@@ -92,4 +92,5 @@ export default function ProjectCard({ project }) {
     </article>
   )
 }
+
 
