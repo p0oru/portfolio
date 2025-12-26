@@ -2,7 +2,7 @@ import {
   SiReact,
   SiNodedotjs,
   SiPython,
-  SiAmazonaws,
+  SiAwsamplify,
   SiDocker,
   SiTypescript,
   SiTailwindcss,
@@ -25,7 +25,7 @@ export const featuredSkills = [
   { name: 'React', Icon: SiReact },
   { name: 'Node.js', Icon: SiNodedotjs },
   { name: 'Python', Icon: SiPython },
-  { name: 'AWS', Icon: SiAmazonaws },
+  { name: 'AWS', Icon: SiAwsamplify },
   { name: 'Docker', Icon: SiDocker },
 ]
 
