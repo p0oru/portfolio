@@ -150,5 +150,18 @@ a { color: inherit; text-decoration: none; }
   * { animation: none !important; transition: none !important; }
 }
 
-
-
+/* ── Admin panel variables ───────────────────────────────────── */
+.admin-shell {
+  --adm-bg:         #0e0c0a;
+  --adm-surface:    #141210;
+  --adm-surface-2:  #1a1816;
+  --adm-border:     #2a2825;
+  --adm-text:       #e7e5e4;
+  --adm-muted:      #78716c;
+  --adm-dim:        #57534e;
+  --adm-accent:     #d97706;
+  --adm-accent-dim: #1f1c15;
+  --adm-green:      #34d399;
+  --adm-red:        #f87171;
+  --adm-radius:     8px;
+}

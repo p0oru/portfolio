@@ -9,13 +9,14 @@ import BlogPost from './pages/BlogPost'
 import Resume from './pages/Resume'
 import ProjectDetail from './pages/ProjectDetail'
 import Skills from './pages/Skills'
+import AdminApp from './admin/AdminApp'
 
 function App() {
   return (
     <HashRouter>
       <AnimatePresence mode="wait">
         <Routes>
-          <Route element={<Layout />}> 
+          <Route element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="projects" element={<Projects />} />
@@ -25,6 +26,7 @@ function App() {
             <Route path="resume" element={<Resume />} />
             <Route path="skills" element={<Skills />} />
           </Route>
+          <Route path="admin/*" element={<AdminApp />} />
         </Routes>
       </AnimatePresence>
     </HashRouter>
