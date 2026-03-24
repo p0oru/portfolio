@@ -1,0 +1,14 @@
+# Ignore all md and docx files
+*.md
+*.docx
+
+# Except for the actual resume
+!web/Resume_Puru_Singh.docx
+!Resume_Puru_Singh.docx
+!web/dist/assets/Resume_Puru_Singh*.docx
+
+# Specific ignores
+CLAUDE.md
+.superpowers/
+docs/
+.claude/

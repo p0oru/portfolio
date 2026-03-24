@@ -22,3 +22,6 @@ pnpm-debug.log*
 # Operating System files
 .DS_Store
 Thumbs.db
+
+# Superpowers brainstorm sessions
+.superpowers/
