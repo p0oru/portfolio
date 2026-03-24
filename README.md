@@ -1,6 +1,6 @@
 # Puru Singh — Portfolio
 
-Personal portfolio site running on a Raspberry Pi 5, self-hosted with a full backend API, admin dashboard, and analytics.
+Personal portfolio site running on a Raspberry Pi 5, self-hosted with a full backend API and analytics.
 
 **Live:** [puru.live](https://puru.live)
 
@@ -26,12 +26,11 @@ portfolio/
 │   │   ├── pages/        # Route components (Home, Projects, Blog, etc.)
 │   │   ├── components/   # Layout, ProjectCard
 │   │   ├── hooks/        # Data fetching hooks (useProjects, usePosts, etc.)
-│   │   ├── admin/        # Admin dashboard (pages, components, api.js)
 │   │   └── styles/       # global.scss (design tokens)
 │   └── index.html
 ├── api/                  # Express backend
-│   ├── routes/           # auth, public, projects, posts, experience, education, skills, media, settings
-│   ├── middleware/        # auth.js (JWT verification)
+│   ├── routes/           # public, projects, posts, experience, education, skills, media, settings
+│   ├── middleware/        # JWT verification
 │   ├── db.js             # SQLite schema + init
 │   └── index.js          # Entry point
 └── README.md
@@ -51,7 +50,6 @@ portfolio/
 | `/about` | Bio, contact, skills |
 | `/skills` | Skills by category |
 | `/resume` | Experience + education timeline |
-| `/#/admin` | Admin dashboard (password protected) |
 
 ---
 
@@ -113,13 +111,11 @@ Set the following environment variables (or create `api/.env`):
 
 ```env
 JWT_SECRET=your_secret_here
-ADMIN_PASSWORD=your_admin_password
-DB_PATH=./portfolio.db          # optional, defaults to ./portfolio.db
-UPLOADS_PATH=./uploads          # optional
+ADMIN_PASSWORD=your_password
+DB_PATH=./portfolio.db
+UPLOADS_PATH=./uploads
 UPLOADS_URL_BASE=http://localhost:4000/uploads
 ```
-
-> The admin password is hashed and stored in the database. Set `ADMIN_PASSWORD` on first run — it seeds the hash automatically.
 
 ---
 
@@ -132,7 +128,6 @@ UPLOADS_URL_BASE=http://localhost:4000/uploads
 | `puru.live` | Portfolio (Nginx → React dist) | 3000 |
 | `api.puru.live` | Express API | 4000 |
 | `metrics.puru.live` | Umami analytics | 3001 |
-| `hook.puru.live` | Webhook auto-deploy server | 9000 |
 | `watch.puru.live` | Jellyfin media server | 8096 |
 | `upload.puru.live` | File Browser | 8080 |
 | `share.puru.live` | Pingvin Share | 3002 |
@@ -145,19 +140,16 @@ Every push to `main` triggers an automatic deploy:
 
 ```
 git push origin main
-  → GitHub webhook → https://hook.puru.live
-  → Pi runs: git pull && npm install && npm run build
+  → GitHub webhook → Pi
+  → git pull && npm install && npm run build
   → Nginx serves updated dist/
 ```
-
-The webhook server listens on port 9000 and accepts any POST request.
 
 ### Docker Compose
 
 All services are defined in `~/media-server/docker-compose.yml` on the Pi. To manage:
 
 ```bash
-# On the Pi
 cd ~/media-server
 
 docker compose ps                     # list running services
@@ -166,12 +158,10 @@ docker compose restart portfolio-api  # restart a service
 docker compose pull && docker compose up -d  # update images
 ```
 
-### Manual Deploy (if webhook fails)
+### Manual Deploy (if auto-deploy fails)
 
 ```bash
-# SSH into the Pi
 ssh admin@<pi-ip>
-
 cd ~/portfolio
 git pull
 cd web && npm install && npm run build
@@ -186,30 +176,5 @@ Config lives at `/etc/cloudflared/config.yml` on the Pi. To add a new subdomain:
    - hostname: newservice.puru.live
      service: http://localhost:PORT
    ```
-2. Add a CNAME in Cloudflare DNS: `newservice.puru.live` → `<tunnel-uuid>.cfargotunnel.com`
+2. Add a CNAME in Cloudflare DNS pointing to the tunnel
 3. Restart: `sudo systemctl restart cloudflared`
-
----
-
-## Admin Dashboard
-
-Access at `https://puru.live/#/admin`
-
-- **Login** with your admin password
-- **Projects** — create/edit/delete projects, toggle featured/visible, set tech stack and links
-- **Blog** — write posts in markdown, toggle published/draft
-- **Experience** — manage work history entries
-- **Education** — manage education entries
-- **Skills** — manage skills by category
-- **Media** — upload images (used for project covers, etc.)
-- **About/Settings** — edit bio, contact info, links, open-to-work status
-
-JWT tokens expire after 24 hours. Change your password via Settings → Password in the admin panel.
-
----
-
-## Analytics
-
-Umami runs at `metrics.puru.live`. Default login: `admin` / `umami` — **change this immediately**.
-
-The tracking script in `web/index.html` automatically records page views on `puru.live`. View stats by logging into the Umami dashboard.
