@@ -72,58 +72,6 @@ GET  /api/public/skills           Skills grouped by category
 GET  /api/public/settings         Public profile settings (name, bio, links, etc.)
 ```
 
-### Auth
-
-```
-POST /api/auth/login              { password } → { token }
-```
-
-All routes below require `Authorization: Bearer <token>`.
-
-### Admin Routes
-
-```
-# Projects
-GET    /api/projects
-POST   /api/projects
-PUT    /api/projects/:id
-DELETE /api/projects/:id
-
-# Blog Posts
-GET    /api/posts
-POST   /api/posts
-PUT    /api/posts/:id
-DELETE /api/posts/:id
-
-# Experience
-GET    /api/experience
-POST   /api/experience
-PUT    /api/experience/:id
-DELETE /api/experience/:id
-
-# Education
-GET    /api/education
-POST   /api/education
-PUT    /api/education/:id
-DELETE /api/education/:id
-
-# Skills
-GET    /api/skills
-POST   /api/skills
-PUT    /api/skills/:id
-DELETE /api/skills/:id
-
-# Media
-GET    /api/media
-POST   /api/media/upload          multipart/form-data, field: file (max 10MB)
-DELETE /api/media/:id
-
-# Settings
-GET    /api/settings
-PUT    /api/settings              Bulk upsert { key: value }
-PUT    /api/settings/password     { current_password, new_password }
-```
-
 ### Settings Keys
 
 | Key | Description |
