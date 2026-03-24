@@ -1,44 +1,29 @@
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import matter from 'gray-matter'
+import { useParams, Link } from 'react-router-dom'
 import { marked } from 'marked'
+import { usePost } from '../hooks/usePosts'
+import styles from './BlogPost.module.scss'
 
 export default function BlogPost() {
   const { slug } = useParams()
-  const [content, setContent] = useState('')
-  const [frontmatter, setFrontmatter] = useState({ title: '', date: '', tags: [] })
+  const { post, loading } = usePost(slug)
 
-  useEffect(() => {
-    async function load() {
-      const file = await import(`../posts/${slug}.md?raw`).catch(() => null)
-      if (!file) return
-      const raw = file.default || file
-      const { data, content } = matter(raw)
-      setFrontmatter(data)
-      setContent(marked.parse(content))
-    }
-    load()
-  }, [slug])
+  if (loading) return <div className="container" style={{ paddingTop: 40, color: 'var(--muted)' }}>Loading…</div>
+  if (!post) return <div className="container" style={{ paddingTop: 40 }}><p>Post not found.</p><Link to="/blog" className="btn-ghost">Back</Link></div>
 
   return (
     <div className="container">
-      <article className="glass" style={{ padding: 24, borderRadius: 14 }}>
-        <h1>{frontmatter.title}</h1>
-        {frontmatter.date && (
-          <p style={{ color: 'var(--muted)' }}>{new Date(frontmatter.date).toDateString()}</p>
-        )}
-        <div className="mt-24 neon-divider" />
-        <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
-          {(frontmatter.tags || []).map((t) => (
-            <span key={t} className="chip">{t}</span>
-          ))}
+      <article className={styles.article}>
+        <Link to="/blog" className={styles.back}>← Blog</Link>
+        <div className={styles.meta}>
+          <span className={styles.date}>{post.published_at}</span>
+          <div className={styles.tags}>
+            {(post.tags || []).map((t) => <span key={t} className="chip">{t}</span>)}
+          </div>
         </div>
-        <div className="mt-24" dangerouslySetInnerHTML={{ __html: content }} />
+        <h1 className={styles.title}>{post.title}</h1>
+        <div className="divider" />
+        <div className={styles.content} dangerouslySetInnerHTML={{ __html: marked.parse(post.content || '') }} />
       </article>
     </div>
   )
 }
-
-
-
-

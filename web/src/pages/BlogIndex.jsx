@@ -1,36 +1,34 @@
-import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import matter from 'gray-matter'
+import { usePosts } from '../hooks/usePosts'
+import styles from './BlogIndex.module.scss'
 
 export default function BlogIndex() {
-  const [posts, setPosts] = useState([])
-
-  useEffect(() => {
-    async function load() {
-      // Dynamically import all markdown files in /posts
-      const modules = import.meta.glob('../posts/*.md', { query: '?raw', import: 'default' })
-      const entries = await Promise.all(
-        Object.entries(modules).map(async ([path, loader]) => {
-          const raw = await loader()
-          const { data } = matter(raw)
-          const slug = path.split('/').pop().replace(/\.md$/, '')
-          return { slug, ...data }
-        })
-      )
-      // sort by date desc
-      entries.sort((a, b) => new Date(b.date) - new Date(a.date))
-      setPosts(entries)
-    }
-    load()
-  }, [])
+  const { posts, loading } = usePosts()
 
   return (
     <div className="container">
-      <h1>Blog</h1>
-      <p className="mb-16">Coming soon.</p>
-      {/* Keeping dynamic loading ready for future posts, but not showing the list now */}
+      <div className={styles.header}>
+        <h1>Blog</h1>
+        <p className={styles.sub}>Notes on what I'm learning and building</p>
+      </div>
+      {loading ? <p style={{ color: 'var(--muted)' }}>Loading…</p> : posts.length === 0 ? (
+        <p style={{ color: 'var(--muted)' }}>No posts yet.</p>
+      ) : (
+        <div className={styles.list}>
+          {posts.map((post) => (
+            <Link key={post.slug} to={`/blog/${post.slug}`} className={styles.card}>
+              <div className={styles.meta}>
+                <span className={styles.date}>{post.published_at}</span>
+                <div className={styles.tags}>
+                  {(post.tags || []).map((t) => <span key={t} className="chip">{t}</span>)}
+                </div>
+              </div>
+              <h2 className={styles.title}>{post.title}</h2>
+              {post.excerpt && <p className={styles.excerpt}>{post.excerpt}</p>}
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   )
 }
-
-

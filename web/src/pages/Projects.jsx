@@ -1,24 +1,34 @@
-import styles from './Projects.module.scss'
-import Tilt from '../components/Tilt'
+import { motion } from 'framer-motion'
+import { useProjects } from '../hooks/useProjects'
 import ProjectCard from '../components/ProjectCard/ProjectCard'
-import { projects as data } from '../data/projects'
-
-const demoProjects = data
+import styles from './Projects.module.scss'
 
 export default function Projects() {
+  const { projects, loading } = useProjects()
+
   return (
     <div className="container">
-      <h1>Projects</h1>
-      <p className="mb-16">Short, visual showcases. Click to learn more.</p>
-      <div className={styles.grid}>
-        {demoProjects.map((p, idx) => (
-          <Tilt key={idx}>
-            <ProjectCard project={p} />
-          </Tilt>
-        ))}
+      <div className={styles.header}>
+        <h1>Projects</h1>
+        <p className={styles.sub}>Things I've built</p>
       </div>
+      {loading ? (
+        <p style={{ color: 'var(--muted)' }}>Loading…</p>
+      ) : (
+        <div className={styles.grid}>
+          {projects.map((project, i) => (
+            <motion.div
+              key={project.slug}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.4, delay: i * 0.06 }}
+            >
+              <ProjectCard project={project} />
+            </motion.div>
+          ))}
+        </div>
+      )}
     </div>
   )
 }
-
-

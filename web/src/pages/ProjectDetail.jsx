@@ -1,59 +1,46 @@
 import { useParams, Link } from 'react-router-dom'
-import { getProjectBySlug } from '../data/projects'
+import { marked } from 'marked'
+import { useProject } from '../hooks/useProjects'
+import styles from './ProjectDetail.module.scss'
 
 export default function ProjectDetail() {
   const { slug } = useParams()
-  const project = getProjectBySlug(slug)
+  const { project, loading } = useProject(slug)
 
-  if (!project) {
-    return (
-      <div className="container">
-        <div className="glass" style={{ padding: 24, borderRadius: 14 }}>
-          <h1>Project not found</h1>
-          <p>We couldn’t find this project.</p>
-          <p><Link className="btn" to="/projects">Back to Projects</Link></p>
-        </div>
-      </div>
-    )
-  }
+  if (loading) return <div className="container" style={{ paddingTop: 40, color: 'var(--muted)' }}>Loading…</div>
+  if (!project) return <div className="container" style={{ paddingTop: 40 }}><p>Project not found.</p><Link to="/projects" className="btn-ghost">Back</Link></div>
+
+  const isPublic = project.links?.github || project.links?.live
 
   return (
     <div className="container">
-      <article className="glass grain" style={{ padding: 24, borderRadius: 14 }}>
-        <h1>{project.title}</h1>
-        <p style={{ color: 'var(--muted)' }}>{project.blurb}</p>
-        <div className="mt-24 neon-divider" />
-        <div className="mt-24" style={{ display: 'grid', gap: 14 }}>
-          <p>{project.description}</p>
-          <ul>
-            {project.bullets.map((b, i) => (
-              <li key={i}>{b}</li>
-            ))}
-          </ul>
-          {(project.sections || []).map((sec) => (
-            <section key={sec.title} className="mt-24">
-              <h3>{sec.title}</h3>
-              <ul>
-                {sec.items.map((it, idx) => (
-                  <li key={idx}>{it}</li>
-                ))}
-              </ul>
-            </section>
-          ))}
-          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-            {project.tech.map((t) => (
-              <span key={t} className="chip">{t}</span>
-            ))}
+      <div className={styles.wrap}>
+        <Link to="/projects" className={styles.back}>← Projects</Link>
+        <div className={styles.badges}>
+          {project.featured && <span className={styles.featured}>Featured</span>}
+          <span className={isPublic ? styles.public : styles.private}>{isPublic ? 'Public' : 'Private'}</span>
+        </div>
+        <h1 className={styles.title}>{project.title}</h1>
+        {project.tagline && <p className={styles.tagline}>{project.tagline}</p>}
+        {(project.tech_stack || []).length > 0 && (
+          <div className={styles.stack}>
+            {(project.tech_stack || []).map((t) => <span key={t} className="chip">{t}</span>)}
           </div>
-        </div>
-        <div className="mt-24" style={{ display: 'flex', gap: 12 }}>
-          {project.links.live && <a className="btn" href={project.links.live} target="_blank" rel="noreferrer">Live</a>}
-          {project.links.github && <a className="btn" href={project.links.github} target="_blank" rel="noreferrer">Source</a>}
-          <Link className="btn" to="/projects">Back</Link>
-        </div>
-      </article>
+        )}
+        {(project.links?.github || project.links?.live) && (
+          <div className={styles.links}>
+            {project.links.github && <a href={project.links.github} target="_blank" rel="noreferrer" className="btn">GitHub ↗</a>}
+            {project.links.live && <a href={project.links.live} target="_blank" rel="noreferrer" className="btn-ghost">Live ↗</a>}
+          </div>
+        )}
+        <div className="divider" />
+        {project.long_desc && (
+          <div
+            className={styles.content}
+            dangerouslySetInnerHTML={{ __html: marked.parse(project.long_desc) }}
+          />
+        )}
+      </div>
     </div>
   )
 }
-
-

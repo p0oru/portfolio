@@ -1,0 +1,14 @@
+.article { max-width: 680px; padding-bottom: 64px; }
+.back { display: inline-block; font-size: 13px; color: var(--muted); margin-bottom: 20px; text-decoration: none; &:hover { color: var(--accent); } }
+.meta { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+.date { font-size: 12px; color: var(--dim); }
+.tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.title { margin: 0 0 16px; }
+.content {
+  font-size: 15px; line-height: 1.8; color: var(--muted);
+  h2, h3 { color: var(--text); margin-top: 28px; }
+  p { margin: 0 0 16px; }
+  a { color: var(--accent); text-decoration: underline; }
+  code { background: var(--surface-2); padding: 2px 6px; border-radius: 4px; font-size: 13px; }
+  pre { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; overflow-x: auto; code { background: none; padding: 0; } }
+}

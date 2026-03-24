@@ -1,57 +1,75 @@
+import { useState } from 'react'
 import { Outlet, NavLink } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
+import { motion, AnimatePresence } from 'framer-motion'
+import { FaGithub, FaLinkedin, FaEnvelope, FaBars, FaTimes } from 'react-icons/fa'
 import styles from './Layout.module.scss'
-import Splash from '../Splash/Splash'
-import MouseHalo from '../MouseHalo/MouseHalo'
-import BackgroundFX from '../BackgroundFX'
+
+const NAV_LINKS = [
+  { to: '/about', label: 'About' },
+  { to: '/projects', label: 'Projects' },
+  { to: '/blog', label: 'Blog' },
+  { to: '/resume', label: 'Resume' },
+]
 
 export default function Layout() {
+  const [menuOpen, setMenuOpen] = useState(false)
+
   return (
     <div className={styles.shell}>
-      <BackgroundFX />
-      <Splash />
-      <MouseHalo />
       <header className={styles.header}>
-        <div className="container" style={{ display: 'flex', alignItems: 'center' }}>
-          <NavLink to="/" className={styles.logo}>
-            <span className={styles.logoMark}>▰</span>
-            <span className={styles.logoText}>PuruSingh()</span>
-          </NavLink>
+        <div className={'container ' + styles.headerInner}>
+          <NavLink to="/" className={styles.logo}>Puru Singh</NavLink>
           <nav className={styles.nav}>
-            <NavLink to="/about" className={({ isActive }) => isActive ? styles.active : undefined}>About</NavLink>
-            <NavLink to="/projects" className={({ isActive }) => isActive ? styles.active : undefined}>Projects</NavLink>
-            <NavLink to="/blog" className={({ isActive }) => isActive ? styles.active : undefined}>Blog</NavLink>
-            <NavLink to="/resume" className={({ isActive }) => isActive ? styles.active : undefined}>Resume</NavLink>
+            {NAV_LINKS.map(({ to, label }) => (
+              <NavLink key={to} to={to} className={({ isActive }) => styles.link + (isActive ? ' ' + styles.active : '')}>
+                {label}
+              </NavLink>
+            ))}
           </nav>
           <div className={styles.socials}>
-            {/* Social links */}
             <a href="https://github.com/p0oru" target="_blank" rel="noreferrer" aria-label="GitHub"><FaGithub /></a>
             <a href="https://www.linkedin.com/in/purusingh2006/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><FaLinkedin /></a>
             <a href="mailto:psing176@asu.edu" aria-label="Email"><FaEnvelope /></a>
           </div>
+          <button className={styles.hamburger} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
+            {menuOpen ? <FaTimes /> : <FaBars />}
+          </button>
         </div>
       </header>
 
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            className={styles.mobileMenu}
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.18 }}
+          >
+            {NAV_LINKS.map(({ to, label }) => (
+              <NavLink key={to} to={to} className={styles.mobileLink} onClick={() => setMenuOpen(false)}>
+                {label}
+              </NavLink>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <motion.main
         className={styles.main}
-        initial={{ opacity: 0, y: 8 }}
+        initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -8 }}
-        transition={{ duration: 0.3 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.28 }}
       >
         <Outlet />
       </motion.main>
 
       <footer className={styles.footer}>
         <div className="container">
-          <div className={styles.footerRow}>
-            <div className={styles.brand}>© {new Date().getFullYear()} Puru Singh. All rights reserved.</div>
-          </div>
+          <p>© {new Date().getFullYear()} Puru Singh</p>
         </div>
       </footer>
     </div>
   )
 }
-
-

@@ -25,31 +25,31 @@ export const api = {
   login: (password) => request('/api/auth/login', { method: 'POST', body: JSON.stringify({ password }) }),
 
   // Projects
-  getProjects: () => request('/api/public/projects'),
+  getProjects: () => request('/api/projects'),
   createProject: (data) => request('/api/projects', { method: 'POST', body: JSON.stringify(data) }),
   updateProject: (id, data) => request(`/api/projects/${id}`, { method: 'PUT', body: JSON.stringify(data) }),
   deleteProject: (id) => request(`/api/projects/${id}`, { method: 'DELETE' }),
 
   // Posts
-  getPosts: () => request('/api/public/posts'),
+  getPosts: () => request('/api/posts'),
   createPost: (data) => request('/api/posts', { method: 'POST', body: JSON.stringify(data) }),
   updatePost: (id, data) => request(`/api/posts/${id}`, { method: 'PUT', body: JSON.stringify(data) }),
   deletePost: (id) => request(`/api/posts/${id}`, { method: 'DELETE' }),
 
   // Experience
-  getExperience: () => request('/api/public/experience'),
+  getExperience: () => request('/api/experience'),
   createExperience: (data) => request('/api/experience', { method: 'POST', body: JSON.stringify(data) }),
   updateExperience: (id, data) => request(`/api/experience/${id}`, { method: 'PUT', body: JSON.stringify(data) }),
   deleteExperience: (id) => request(`/api/experience/${id}`, { method: 'DELETE' }),
 
   // Education
-  getEducation: () => request('/api/public/education'),
+  getEducation: () => request('/api/education'),
   createEducation: (data) => request('/api/education', { method: 'POST', body: JSON.stringify(data) }),
   updateEducation: (id, data) => request(`/api/education/${id}`, { method: 'PUT', body: JSON.stringify(data) }),
   deleteEducation: (id) => request(`/api/education/${id}`, { method: 'DELETE' }),
 
   // Skills
-  getSkills: () => request('/api/public/skills'),
+  getSkills: () => request('/api/skills'),
   createSkill: (data) => request('/api/skills', { method: 'POST', body: JSON.stringify(data) }),
   updateSkill: (id, data) => request(`/api/skills/${id}`, { method: 'PUT', body: JSON.stringify(data) }),
   deleteSkill: (id) => request(`/api/skills/${id}`, { method: 'DELETE' }),
@@ -69,7 +69,7 @@ export const api = {
   },
 
   // Settings
-  getSettings: () => request('/api/public/settings'),
+  getSettings: () => request('/api/settings'),
   updateSettings: (data) => request('/api/settings', { method: 'PUT', body: JSON.stringify(data) }),
   changePassword: (current_password, new_password) =>
     request('/api/settings/password', { method: 'PUT', body: JSON.stringify({ current_password, new_password }) }),
