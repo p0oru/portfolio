@@ -321,5 +321,12 @@ db.transaction(() => {
   for (const [k, v] of Object.entries(settings)) insertSetting.run(k, v)
 })()
 
+// Always update password_hash so seed.js reliably resets admin credentials
+if (process.env.ADMIN_PASSWORD) {
+  const bcrypt = require('bcryptjs')
+  const hash = bcrypt.hashSync(process.env.ADMIN_PASSWORD, 10)
+  db.prepare("INSERT OR REPLACE INTO settings (key, value) VALUES ('password_hash', ?)").run(hash)
+}
+
 console.log(`✓ Seeded settings`)
 console.log('\n✅ Seed complete.')
