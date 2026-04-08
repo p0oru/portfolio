@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Outlet, NavLink } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FaGithub, FaLinkedin, FaEnvelope, FaBars, FaTimes } from 'react-icons/fa'
+import { FaGithub, FaLinkedin, FaBars, FaTimes } from 'react-icons/fa'
 import styles from './Layout.module.scss'
 
 const NAV_LINKS = [
@@ -29,7 +29,7 @@ export default function Layout() {
           <div className={styles.socials}>
             <a href="https://github.com/p0oru" target="_blank" rel="noreferrer" aria-label="GitHub"><FaGithub /></a>
             <a href="https://www.linkedin.com/in/purusingh2006/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><FaLinkedin /></a>
-            <a href="mailto:psing176@asu.edu" aria-label="Email"><FaEnvelope /></a>
+            <a href="mailto:connect@puru.live" className={styles.emailText}>connect@puru.live</a>
           </div>
           <button className={styles.hamburger} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
             {menuOpen ? <FaTimes /> : <FaBars />}

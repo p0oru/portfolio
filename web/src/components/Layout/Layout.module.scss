@@ -51,6 +51,12 @@
   a { color: var(--muted); transition: color 150ms; &:hover { color: var(--accent); } }
 }
 
+.emailText {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
 .hamburger {
   display: none;
   background: none;
