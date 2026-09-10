@@ -1,22 +1,10 @@
-import { useState, useEffect } from 'react'
-
-const BASE = import.meta.env.VITE_API_URL || 'https://api.puru.live'
+import postsData from '../data/posts.json'
 
 export function usePosts() {
-  const [posts, setPosts] = useState([])
-  const [loading, setLoading] = useState(true)
-  useEffect(() => {
-    fetch(`${BASE}/api/public/posts`).then(r => r.json()).then(setPosts).finally(() => setLoading(false))
-  }, [])
-  return { posts, loading }
+  return { posts: postsData, loading: false }
 }
 
 export function usePost(slug) {
-  const [post, setPost] = useState(null)
-  const [loading, setLoading] = useState(true)
-  useEffect(() => {
-    if (!slug) return
-    fetch(`${BASE}/api/public/posts/${slug}`).then(r => r.ok ? r.json() : null).then(setPost).finally(() => setLoading(false))
-  }, [slug])
-  return { post, loading }
+  const post = postsData.find((p) => p.slug === slug) || null
+  return { post, loading: false }
 }

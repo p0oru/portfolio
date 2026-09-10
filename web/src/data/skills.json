@@ -1,0 +1,272 @@
+{
+  "AI & ML": [
+    {
+      "id": 21,
+      "category": "AI & ML",
+      "name": "OpenAI API",
+      "icon_name": "SiOpenai",
+      "proficiency": 5,
+      "display_order": 1
+    },
+    {
+      "id": 22,
+      "category": "AI & ML",
+      "name": "RAG Architecture",
+      "icon_name": null,
+      "proficiency": 5,
+      "display_order": 2
+    },
+    {
+      "id": 23,
+      "category": "AI & ML",
+      "name": "ChromaDB",
+      "icon_name": null,
+      "proficiency": 4,
+      "display_order": 3
+    },
+    {
+      "id": 24,
+      "category": "AI & ML",
+      "name": "LLMs (Gemini, Groq)",
+      "icon_name": null,
+      "proficiency": 4,
+      "display_order": 4
+    },
+    {
+      "id": 31,
+      "category": "AI & ML",
+      "name": "Amazon Bedrock",
+      "icon_name": "SiAmazonaws",
+      "proficiency": 4,
+      "display_order": 5
+    }
+  ],
+  "Backend": [
+    {
+      "id": 12,
+      "category": "Backend",
+      "name": "Node.js",
+      "icon_name": "SiNodedotjs",
+      "proficiency": 5,
+      "display_order": 1
+    },
+    {
+      "id": 13,
+      "category": "Backend",
+      "name": "Express.js",
+      "icon_name": "SiExpress",
+      "proficiency": 5,
+      "display_order": 2
+    },
+    {
+      "id": 14,
+      "category": "Backend",
+      "name": "FastAPI",
+      "icon_name": "SiFastapi",
+      "proficiency": 4,
+      "display_order": 3
+    },
+    {
+      "id": 15,
+      "category": "Backend",
+      "name": "Next.js",
+      "icon_name": "SiNextdotjs",
+      "proficiency": 3,
+      "display_order": 4
+    }
+  ],
+  "Databases": [
+    {
+      "id": 16,
+      "category": "Databases",
+      "name": "MySQL",
+      "icon_name": "SiMysql",
+      "proficiency": 5,
+      "display_order": 1
+    },
+    {
+      "id": 17,
+      "category": "Databases",
+      "name": "MongoDB",
+      "icon_name": "SiMongodb",
+      "proficiency": 4,
+      "display_order": 2
+    },
+    {
+      "id": 18,
+      "category": "Databases",
+      "name": "Redis",
+      "icon_name": "SiRedis",
+      "proficiency": 4,
+      "display_order": 3
+    },
+    {
+      "id": 19,
+      "category": "Databases",
+      "name": "SQLite",
+      "icon_name": null,
+      "proficiency": 4,
+      "display_order": 4
+    },
+    {
+      "id": 20,
+      "category": "Databases",
+      "name": "PostgreSQL",
+      "icon_name": "SiPostgresql",
+      "proficiency": 3,
+      "display_order": 5
+    }
+  ],
+  "Frontend": [
+    {
+      "id": 7,
+      "category": "Frontend",
+      "name": "React",
+      "icon_name": "SiReact",
+      "proficiency": 5,
+      "display_order": 1
+    },
+    {
+      "id": 8,
+      "category": "Frontend",
+      "name": "Angular 19",
+      "icon_name": "SiAngular",
+      "proficiency": 4,
+      "display_order": 2
+    },
+    {
+      "id": 9,
+      "category": "Frontend",
+      "name": "Tailwind CSS",
+      "icon_name": "SiTailwindcss",
+      "proficiency": 5,
+      "display_order": 3
+    },
+    {
+      "id": 10,
+      "category": "Frontend",
+      "name": "Framer Motion",
+      "icon_name": "SiFramer",
+      "proficiency": 4,
+      "display_order": 4
+    },
+    {
+      "id": 11,
+      "category": "Frontend",
+      "name": "Vite",
+      "icon_name": "SiVite",
+      "proficiency": 4,
+      "display_order": 5
+    }
+  ],
+  "Infrastructure": [
+    {
+      "id": 25,
+      "category": "Infrastructure",
+      "name": "Docker",
+      "icon_name": "SiDocker",
+      "proficiency": 5,
+      "display_order": 1
+    },
+    {
+      "id": 26,
+      "category": "Infrastructure",
+      "name": "AWS",
+      "icon_name": "SiAwsamplify",
+      "proficiency": 4,
+      "display_order": 2
+    },
+    {
+      "id": 27,
+      "category": "Infrastructure",
+      "name": "Nginx",
+      "icon_name": "SiNginx",
+      "proficiency": 4,
+      "display_order": 3
+    },
+    {
+      "id": 28,
+      "category": "Infrastructure",
+      "name": "Linux",
+      "icon_name": "SiLinux",
+      "proficiency": 4,
+      "display_order": 4
+    },
+    {
+      "id": 29,
+      "category": "Infrastructure",
+      "name": "Cloudflare",
+      "icon_name": "SiCloudflare",
+      "proficiency": 4,
+      "display_order": 5
+    },
+    {
+      "id": 32,
+      "category": "Infrastructure",
+      "name": "AWS CDK",
+      "icon_name": "SiAmazonaws",
+      "proficiency": 4,
+      "display_order": 6
+    }
+  ],
+  "Languages": [
+    {
+      "id": 1,
+      "category": "Languages",
+      "name": "Python",
+      "icon_name": "SiPython",
+      "proficiency": 5,
+      "display_order": 1
+    },
+    {
+      "id": 2,
+      "category": "Languages",
+      "name": "TypeScript",
+      "icon_name": "SiTypescript",
+      "proficiency": 5,
+      "display_order": 2
+    },
+    {
+      "id": 3,
+      "category": "Languages",
+      "name": "JavaScript",
+      "icon_name": "SiJavascript",
+      "proficiency": 5,
+      "display_order": 3
+    },
+    {
+      "id": 4,
+      "category": "Languages",
+      "name": "Go",
+      "icon_name": "SiGo",
+      "proficiency": 4,
+      "display_order": 4
+    },
+    {
+      "id": 5,
+      "category": "Languages",
+      "name": "Java",
+      "icon_name": "SiJava",
+      "proficiency": 3,
+      "display_order": 5
+    },
+    {
+      "id": 6,
+      "category": "Languages",
+      "name": "C",
+      "icon_name": null,
+      "proficiency": 3,
+      "display_order": 6
+    }
+  ],
+  "Tools": [
+    {
+      "id": 30,
+      "category": "Tools",
+      "name": "Git",
+      "icon_name": "SiGit",
+      "proficiency": 5,
+      "display_order": 1
+    }
+  ]
+}

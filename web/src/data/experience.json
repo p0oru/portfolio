@@ -1,0 +1,74 @@
+[
+  {
+    "id": 4,
+    "company": "ASU AI Cloud Innovation Center (Powered by AWS)",
+    "role": "Software Development Engineer",
+    "start_date": "2026-05",
+    "end_date": null,
+    "is_current": true,
+    "description": "Build full-stack, AI-powered prototypes for education and public-sector challenges on AWS, using Amazon Bedrock for LLM workloads and AWS CDK to define infrastructure as code. Developed a cross-model verification workflow on Bedrock's Converse API that orchestrates multiple foundation models to cross-check outputs and improve reliability. Own projects end to end using Amazon's Working Backwards methodology, authoring PR/FAQ docs before implementation and presenting design trade-offs to AWS Solutions Architects.",
+    "tech_tags": [
+      "AWS",
+      "Amazon Bedrock",
+      "AWS CDK",
+      "React",
+      "TypeScript",
+      "Python"
+    ],
+    "type": "job",
+    "display_order": 1
+  },
+  {
+    "id": 1,
+    "company": "Superstars WebApp",
+    "role": "Software Development Intern",
+    "start_date": "2026-01",
+    "end_date": "2026-05",
+    "is_current": false,
+    "description": "Built production features for an Angular 19+ platform using TypeScript, RxJS, and SCSS, contributing to a shared component library. Architected a configurable video player component system with multiple playback modes and a reusable video-action-bar, and built a multi-agent Angular code review pipeline with Claude Code to automate quality checks. Drove a codebase-wide cleanup that eliminated dead code and untangled long-lived feature branches to stabilize main.",
+    "tech_tags": [
+      "Angular 19",
+      "TypeScript",
+      "RxJS",
+      "SCSS"
+    ],
+    "type": "internship",
+    "display_order": 2
+  },
+  {
+    "id": 2,
+    "company": "Arizona State University",
+    "role": "Teaching Assistant — Web Design",
+    "start_date": "2026-01",
+    "end_date": "2026-05",
+    "is_current": false,
+    "description": "Teaching assistant under Prof. McCarthy for an HTML/CSS and web design course, supporting students with coursework and feedback.",
+    "tech_tags": [
+      "HTML",
+      "CSS",
+      "Web Design"
+    ],
+    "type": "ta",
+    "display_order": 3
+  },
+  {
+    "id": 3,
+    "company": "3P Innovations Ltd.",
+    "role": "Software Engineering Intern",
+    "start_date": "2025-05",
+    "end_date": "2025-08",
+    "is_current": false,
+    "description": "Built and shipped three full-stack, AI-powered web applications end to end using React, Node.js/Express, and MySQL, integrating OpenAI, Gemini, and Groq APIs. Implemented JWT auth and a 6-role RBAC system with real-time processing for an analytics dashboard used by hospitality teams. Optimized the data layer and query pipeline to cut average load time by ~60% for a luxury hotel client generating CHF 45M+ in annual revenue.",
+    "tech_tags": [
+      "React",
+      "Node.js",
+      "Express",
+      "MySQL",
+      "OpenAI",
+      "Gemini",
+      "Groq"
+    ],
+    "type": "internship",
+    "display_order": 4
+  }
+]
