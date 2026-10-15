@@ -2,6 +2,11 @@ import { motion } from 'framer-motion'
 import { useProjects } from '../hooks/useProjects'
 import ProjectCard from '../components/ProjectCard/ProjectCard'
 import styles from './Projects.module.scss'
+import { projectsMeta } from '../seo/pages'
+
+export function meta() {
+  return projectsMeta()
+}
 
 export default function Projects() {
   const { projects, loading } = useProjects()

@@ -2,6 +2,11 @@ import { useParams, Link } from 'react-router'
 import { marked } from 'marked'
 import { useProject } from '../hooks/useProjects'
 import styles from './ProjectDetail.module.scss'
+import { projectMeta } from '../seo/pages'
+
+export function meta({ params }) {
+  return projectMeta(params.slug)
+}
 
 export default function ProjectDetail() {
   const { slug } = useParams()

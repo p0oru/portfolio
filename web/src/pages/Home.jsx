@@ -4,6 +4,11 @@ import { useProjects } from '../hooks/useProjects'
 import { useSettings } from '../hooks/useSettings'
 import ProjectCard from '../components/ProjectCard/ProjectCard'
 import styles from './Home.module.scss'
+import { homeMeta } from '../seo/pages'
+
+export function meta() {
+  return homeMeta()
+}
 
 export default function Home() {
   const { projects, loading } = useProjects()

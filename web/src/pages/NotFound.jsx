@@ -1,4 +1,9 @@
 import { Link } from 'react-router'
+import { notFoundMeta } from '../seo/pages'
+
+export function meta() {
+  return notFoundMeta()
+}
 
 export default function NotFound() {
   return (

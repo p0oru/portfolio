@@ -4,6 +4,11 @@ import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
 import { useSettings } from '../hooks/useSettings'
 import { useSkills } from '../hooks/useSkills'
 import styles from './About.module.scss'
+import { aboutMeta } from '../seo/pages'
+
+export function meta() {
+  return aboutMeta()
+}
 
 export default function About() {
   const { settings } = useSettings()

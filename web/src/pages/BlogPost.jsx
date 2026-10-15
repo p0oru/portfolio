@@ -2,6 +2,11 @@ import { useParams, Link } from 'react-router'
 import { marked } from 'marked'
 import { usePost } from '../hooks/usePosts'
 import styles from './BlogPost.module.scss'
+import { postMeta } from '../seo/pages'
+
+export function meta({ params }) {
+  return postMeta(params.slug)
+}
 
 export default function BlogPost() {
   const { slug } = useParams()

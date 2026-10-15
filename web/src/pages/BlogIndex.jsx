@@ -1,6 +1,11 @@
 import { Link } from 'react-router'
 import { usePosts } from '../hooks/usePosts'
 import styles from './BlogIndex.module.scss'
+import { blogMeta } from '../seo/pages'
+
+export function meta() {
+  return blogMeta()
+}
 
 export default function BlogIndex() {
   const { posts, loading } = usePosts()

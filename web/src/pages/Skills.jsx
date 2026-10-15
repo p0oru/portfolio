@@ -1,5 +1,10 @@
 import { useSkills } from '../hooks/useSkills'
 import styles from './Skills.module.scss'
+import { skillsMeta } from '../seo/pages'
+
+export function meta() {
+  return skillsMeta()
+}
 
 export default function Skills() {
   const { skills, loading } = useSkills()

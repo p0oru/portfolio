@@ -3,6 +3,11 @@ import { useExperience } from '../hooks/useExperience'
 import { useEducation } from '../hooks/useEducation'
 import { useSettings } from '../hooks/useSettings'
 import styles from './Resume.module.scss'
+import { resumeMeta } from '../seo/pages'
+
+export function meta() {
+  return resumeMeta()
+}
 
 function formatDate(d) {
   if (!d) return 'Present'
