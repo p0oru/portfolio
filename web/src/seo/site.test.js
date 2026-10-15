@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest'
 import projects from '../data/projects.json'
-import { canonicalPath, canonicalUrl, contentPages, sitePages, STATIC_PAGES } from './site'
+import { canonicalPath, canonicalUrl, contentPages, legacyHashTarget, sitePages, STATIC_PAGES } from './site'
 
 vi.mock('../data/posts.json', () => ({ default: [{ slug: 'hello-world' }] }))
 
@@ -36,5 +36,22 @@ describe('canonical URLs', () => {
 
   it('does not double an existing slash', () => {
     expect(canonicalPath('/about/')).toBe('/about/')
+  })
+})
+
+describe('legacyHashTarget', () => {
+  it('maps old HashRouter links to canonical paths', () => {
+    expect(legacyHashTarget('#/about')).toBe('/about/')
+    expect(legacyHashTarget('#/projects/domainflow')).toBe('/projects/domainflow/')
+    expect(legacyHashTarget('#/')).toBe('/')
+  })
+
+  it('keeps the query string after the trailing slash', () => {
+    expect(legacyHashTarget('#/about?x=1&ref=newsletter')).toBe('/about/?x=1&ref=newsletter')
+  })
+
+  it('ignores plain anchors and empty hashes', () => {
+    expect(legacyHashTarget('#section')).toBeNull()
+    expect(legacyHashTarget('')).toBeNull()
   })
 })

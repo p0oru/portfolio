@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Links, Meta, Outlet, Scripts, ScrollRestoration, useNavigate } from 'react-router'
-import { canonicalPath } from './seo/site'
+import { legacyHashTarget } from './seo/site'
 import './styles/global.scss'
 
 export function Layout({ children }) {
@@ -37,8 +37,8 @@ export default function App() {
 
   // The site used HashRouter until 2026-10; forward old links like puru.live/#/about
   useEffect(() => {
-    const { hash } = window.location
-    if (hash.startsWith('#/')) navigate(canonicalPath(hash.slice(1)), { replace: true })
+    const target = legacyHashTarget(window.location.hash)
+    if (target) navigate(target, { replace: true })
   }, [navigate])
 
   return <Outlet />

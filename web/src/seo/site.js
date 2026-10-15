@@ -26,6 +26,14 @@ export function canonicalUrl(path) {
   return SITE_URL + canonicalPath(path)
 }
 
+// Old HashRouter links (puru.live/#/about?x=1) → canonical path, keeping any query string
+export function legacyHashTarget(hash) {
+  if (!hash.startsWith('#/')) return null
+  const target = hash.slice(1)
+  const q = target.indexOf('?')
+  return q === -1 ? canonicalPath(target) : canonicalPath(target.slice(0, q)) + target.slice(q)
+}
+
 export const SITE_NAME = 'Puru Singh'
 export const OG_IMAGE = `${SITE_URL}/pfp.jpg`
 
