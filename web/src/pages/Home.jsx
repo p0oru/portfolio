@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import { motion } from 'framer-motion'
 import { useProjects } from '../hooks/useProjects'
 import { useSettings } from '../hooks/useSettings'

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import { usePosts } from '../hooks/usePosts'
 import styles from './BlogIndex.module.scss'
 

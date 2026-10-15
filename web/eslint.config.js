@@ -5,7 +5,7 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(['build', '.react-router']),
   {
     files: ['**/*.{js,jsx}'],
     extends: [
@@ -25,6 +25,12 @@ export default defineConfig([
     rules: {
       // `motion` is only referenced as <motion.div>, which core ESLint doesn't count as a use
       'no-unused-vars': ['error', { varsIgnorePattern: '^([A-Z_]|motion$)' }],
+      // React Router route modules export these next to the component
+      'react-refresh/only-export-components': ['warn', { allowConstantExport: true, allowExportNames: ['meta', 'loader', 'Layout'] }],
     },
+  },
+  {
+    files: ['scripts/**/*.js', '*.config.js'],
+    languageOptions: { globals: globals.node },
   },
 ])

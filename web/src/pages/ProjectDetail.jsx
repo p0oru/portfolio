@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link } from 'react-router'
 import { marked } from 'marked'
 import { useProject } from '../hooks/useProjects'
 import styles from './ProjectDetail.module.scss'

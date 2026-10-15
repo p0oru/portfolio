@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link } from 'react-router'
 import { marked } from 'marked'
 import { usePost } from '../hooks/usePosts'
 import styles from './BlogPost.module.scss'

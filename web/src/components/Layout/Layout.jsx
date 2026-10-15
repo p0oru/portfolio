@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Outlet, NavLink } from 'react-router-dom'
+import { Outlet, NavLink } from 'react-router'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaGithub, FaLinkedin, FaBars, FaTimes } from 'react-icons/fa'
 import styles from './Layout.module.scss'
@@ -67,7 +67,8 @@ export default function Layout() {
 
       <footer className={styles.footer}>
         <div className="container">
-          <p>© {new Date().getFullYear()} Puru Singh</p>
+          {/* Year is prerendered at build time; the client may render a newer one */}
+          <p suppressHydrationWarning>© {new Date().getFullYear()} Puru Singh</p>
         </div>
       </footer>
     </div>

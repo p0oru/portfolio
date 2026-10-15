@@ -27,4 +27,5 @@ Thumbs.db
 .superpowers/
 
 # Build output
-/dist
+/build
+/.react-router

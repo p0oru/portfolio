@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import styles from './ProjectCard.module.scss'
 
 export default function ProjectCard({ project }) {
