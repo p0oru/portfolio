@@ -8,7 +8,8 @@
     "build": "react-router build",
     "lint": "eslint .",
     "preview": "serve build/client -l 4173",
-    "test": "vitest run"
+    "test": "vitest run",
+    "check": "node scripts/check-build.js"
   },
   "dependencies": {
     "clsx": "^2.1.1",
