@@ -12,4 +12,5 @@ export default [
     route('skills', 'pages/Skills.jsx'),
     route('*', 'pages/NotFound.jsx'),
   ]),
+  route('sitemap.xml', 'routes/sitemap.js'),
 ]

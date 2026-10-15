@@ -62,3 +62,10 @@ export function pageMeta({ title, description, path, type = 'website', noindex =
     { name: 'twitter:image', content: OG_IMAGE },
   ]
 }
+
+export function sitemapXml(lastmod) {
+  const urls = sitePages()
+    .map((path) => `  <url><loc>${canonicalUrl(path)}</loc><lastmod>${lastmod}</lastmod></url>`)
+    .join('\n')
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`
+}
