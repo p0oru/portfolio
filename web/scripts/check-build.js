@@ -42,7 +42,14 @@ for (const page of pages) {
 }
 
 const home = read('index.html')
-const jsonLd = [...home.matchAll(/<script type="application\/ld\+json">([^<]*)<\/script>/g)].map((m) => JSON.parse(m[1]))
+const jsonLd = []
+for (const [, json] of home.matchAll(/<script type="application\/ld\+json">([^<]*)<\/script>/g)) {
+  try {
+    jsonLd.push(JSON.parse(json))
+  } catch {
+    failures.push('home: a JSON-LD block is not valid JSON')
+  }
+}
 const person = jsonLd.find((d) => d['@type'] === 'Person')
 check(person?.name === settings.name, 'home: missing Person JSON-LD')
 check(person?.sameAs?.includes(settings.linkedin_url), 'home: Person.sameAs lacks the LinkedIn URL')
@@ -63,7 +70,7 @@ check(!existsSync(join(CLIENT, '__spa-fallback.html')), '__spa-fallback.html sho
 
 const sitemap = read('sitemap.xml')
 for (const page of pages) check(sitemap.includes(`<loc>${SITE}${page}</loc>`), `sitemap.xml: missing ${page}`)
-check(!sitemap.includes('/404'), 'sitemap.xml: must not list the 404 page')
+check(!sitemap.includes(`<loc>${SITE}/404`), 'sitemap.xml: must not list the 404 page')
 check(read('robots.txt').includes(`Sitemap: ${SITE}/sitemap.xml`), 'robots.txt: missing Sitemap line')
 check(!existsSync(join(CLIENT, 'vite.svg')), 'vite.svg should be gone')
 
