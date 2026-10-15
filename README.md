@@ -10,7 +10,7 @@ Personal portfolio site running on a Raspberry Pi 5, self-hosted with a full bac
 
 | Layer | Tech |
 |---|---|
-| Frontend | React 19, Vite 7, React Router DOM 7, Framer Motion, SCSS Modules |
+| Frontend | React 19, React Router 8 (framework mode, prerendered static HTML), Vite 7, Framer Motion, SCSS Modules |
 | Backend | Node.js, Express, better-sqlite3, JWT auth |
 | Infrastructure | Raspberry Pi 5, Docker Compose, Cloudflare Tunnel |
 | Analytics | Self-hosted Umami |
@@ -23,11 +23,16 @@ Personal portfolio site running on a Raspberry Pi 5, self-hosted with a full bac
 portfolio/
 ├── web/                  # React frontend
 │   ├── src/
+│   │   ├── root.jsx      # HTML document shell (<head>, fonts, analytics)
+│   │   ├── routes.js     # Route table
 │   │   ├── pages/        # Route components (Home, Projects, Blog, etc.)
 │   │   ├── components/   # Layout, ProjectCard
-│   │   ├── hooks/        # Data fetching hooks (useProjects, usePosts, etc.)
+│   │   ├── data/         # Site content as static JSON
+│   │   ├── hooks/        # Hooks that read the JSON data
+│   │   ├── seo/          # Page titles/descriptions, JSON-LD, sitemap
 │   │   └── styles/       # global.scss (design tokens)
-│   └── index.html
+│   ├── scripts/          # check-build.js (asserts the prerendered output)
+│   └── react-router.config.js
 ├── api/                  # Express backend
 │   ├── routes/           # public, projects, posts, experience, education, skills, media, settings
 │   ├── middleware/        # JWT verification
@@ -43,13 +48,13 @@ portfolio/
 | Route | Page |
 |---|---|
 | `/` | Home — hero, featured projects |
-| `/projects` | All projects grid |
-| `/projects/:slug` | Project detail with markdown |
-| `/blog` | Blog post list |
-| `/blog/:slug` | Blog post with markdown |
-| `/about` | Bio, contact, skills |
-| `/skills` | Skills by category |
-| `/resume` | Experience + education timeline |
+| `/projects/` | All projects grid |
+| `/projects/:slug/` | Project detail with markdown |
+| `/blog/` | Blog post list |
+| `/blog/:slug/` | Blog post with markdown |
+| `/about/` | Bio, contact, skills |
+| `/skills/` | Skills by category |
+| `/resume/` | Experience + education timeline |
 
 ---
 
@@ -94,8 +99,10 @@ GET  /api/public/settings         Public profile settings (name, bio, links, etc
 cd web
 npm install
 npm run dev        # dev server on :3000
-npm run build      # production build → dist/
-npm run preview    # preview the production build
+npm run build      # prerendered production build → build/client/
+npm run check      # verify titles, canonical URLs, sitemap, 404 in the build
+npm test           # unit tests (Vitest)
+npm run preview    # serve build/client on :4173
 npm run lint       # ESLint
 ```
 

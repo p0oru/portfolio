@@ -1,5 +1,5 @@
 // Verifies the prerendered site in build/client. Run after `npm run build`.
-import { existsSync, readFileSync } from 'node:fs'
+import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 
 const CLIENT = 'build/client'
@@ -69,6 +69,16 @@ check(notFound.includes('<div id="root"></div>'), '404.html: root should be empt
 check(!existsSync(join(CLIENT, '__spa-fallback.html')), '__spa-fallback.html should have been renamed to 404.html')
 
 const sitemap = read('sitemap.xml')
+// Every prerendered page must be in the sitemap (catches routes added without updating STATIC_PAGES)
+const builtPages = (dir = CLIENT, prefix = '/') => readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+  if (!entry.isDirectory() || entry.name === 'assets') return []
+  const page = `${prefix}${entry.name}/`
+  const sub = join(dir, entry.name)
+  return [...(existsSync(join(sub, 'index.html')) ? [page] : []), ...builtPages(sub, page)]
+})
+for (const page of builtPages()) {
+  check(sitemap.includes(`<loc>${SITE}${page}</loc>`), `sitemap.xml: prerendered page ${page} is missing (add it to STATIC_PAGES?)`)
+}
 for (const page of pages) check(sitemap.includes(`<loc>${SITE}${page}</loc>`), `sitemap.xml: missing ${page}`)
 check(!sitemap.includes(`<loc>${SITE}/404`), 'sitemap.xml: must not list the 404 page')
 check(read('robots.txt').includes(`Sitemap: ${SITE}/sitemap.xml`), 'robots.txt: missing Sitemap line')

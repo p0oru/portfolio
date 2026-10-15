@@ -3,7 +3,7 @@ import posts from '../data/posts.json'
 
 export const SITE_URL = 'https://puru.live'
 
-// Pages without URL params — keep in sync with src/routes.js (scripts/check-build.js catches drift)
+// Pages without URL params — keep in sync with src/routes.js (scripts/check-build.js fails if a prerendered page is missing from the sitemap)
 export const STATIC_PAGES = ['/', '/about', '/projects', '/blog', '/resume', '/skills']
 
 export function contentPages() {
