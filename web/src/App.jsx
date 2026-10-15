@@ -9,7 +9,6 @@ import BlogPost from './pages/BlogPost'
 import Resume from './pages/Resume'
 import ProjectDetail from './pages/ProjectDetail'
 import Skills from './pages/Skills'
-import AdminApp from './admin/AdminApp'
 
 function App() {
   return (
@@ -26,7 +25,6 @@ function App() {
             <Route path="resume" element={<Resume />} />
             <Route path="skills" element={<Skills />} />
           </Route>
-          <Route path="admin/*" element={<AdminApp />} />
         </Routes>
       </AnimatePresence>
     </HashRouter>
