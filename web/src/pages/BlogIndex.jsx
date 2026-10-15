@@ -21,7 +21,7 @@ export default function BlogIndex() {
       ) : (
         <div className={styles.list}>
           {posts.map((post) => (
-            <Link key={post.slug} to={`/blog/${post.slug}`} className={styles.card}>
+            <Link key={post.slug} to={`/blog/${post.slug}/`} className={styles.card}>
               <div className={styles.meta}>
                 <span className={styles.date}>{post.published_at}</span>
                 <div className={styles.tags}>

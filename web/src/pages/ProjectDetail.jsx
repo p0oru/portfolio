@@ -13,14 +13,14 @@ export default function ProjectDetail() {
   const { project, loading } = useProject(slug)
 
   if (loading) return <div className="container" style={{ paddingTop: 40, color: 'var(--muted)' }}>Loading…</div>
-  if (!project) return <div className="container" style={{ paddingTop: 40 }}><p>Project not found.</p><Link to="/projects" className="btn-ghost">Back</Link></div>
+  if (!project) return <div className="container" style={{ paddingTop: 40 }}><p>Project not found.</p><Link to="/projects/" className="btn-ghost">Back</Link></div>
 
   const isPublic = project.links?.github || project.links?.live
 
   return (
     <div className="container">
       <div className={styles.wrap}>
-        <Link to="/projects" className={styles.back}>← Projects</Link>
+        <Link to="/projects/" className={styles.back}>← Projects</Link>
         <div className={styles.badges}>
           {project.featured && <span className={styles.featured}>Featured</span>}
           <span className={isPublic ? styles.public : styles.private}>{isPublic ? 'Public' : 'Private'}</span>

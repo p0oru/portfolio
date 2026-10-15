@@ -5,10 +5,10 @@ import { FaGithub, FaLinkedin, FaBars, FaTimes } from 'react-icons/fa'
 import styles from './Layout.module.scss'
 
 const NAV_LINKS = [
-  { to: '/about', label: 'About' },
-  { to: '/projects', label: 'Projects' },
-  { to: '/blog', label: 'Blog' },
-  { to: '/resume', label: 'Resume' },
+  { to: '/about/', label: 'About' },
+  { to: '/projects/', label: 'Projects' },
+  { to: '/blog/', label: 'Blog' },
+  { to: '/resume/', label: 'Resume' },
 ]
 
 export default function Layout() {

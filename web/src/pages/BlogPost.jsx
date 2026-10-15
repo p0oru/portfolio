@@ -13,12 +13,12 @@ export default function BlogPost() {
   const { post, loading } = usePost(slug)
 
   if (loading) return <div className="container" style={{ paddingTop: 40, color: 'var(--muted)' }}>Loading…</div>
-  if (!post) return <div className="container" style={{ paddingTop: 40 }}><p>Post not found.</p><Link to="/blog" className="btn-ghost">Back</Link></div>
+  if (!post) return <div className="container" style={{ paddingTop: 40 }}><p>Post not found.</p><Link to="/blog/" className="btn-ghost">Back</Link></div>
 
   return (
     <div className="container">
       <article className={styles.article}>
-        <Link to="/blog" className={styles.back}>← Blog</Link>
+        <Link to="/blog/" className={styles.back}>← Blog</Link>
         <div className={styles.meta}>
           <span className={styles.date}>{post.published_at}</span>
           <div className={styles.tags}>

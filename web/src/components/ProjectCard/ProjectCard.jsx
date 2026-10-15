@@ -6,7 +6,7 @@ export default function ProjectCard({ project }) {
   const isPublic = links.github || links.live
 
   return (
-    <Link to={`/projects/${slug}`} className={styles.card}>
+    <Link to={`/projects/${slug}/`} className={styles.card}>
       <div className={styles.top}>
         <div className={styles.badges}>
           {featured && <span className={styles.featured}>Featured</span>}

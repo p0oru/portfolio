@@ -34,8 +34,8 @@ export default function Home() {
             {settings.tagline || 'CS student at ASU building full-stack and AI-powered applications.'}
           </p>
           <div className={styles.ctaRow}>
-            <Link to="/projects" className="btn">View Projects</Link>
-            <Link to="/about" className="btn-ghost">About Me</Link>
+            <Link to="/projects/" className="btn">View Projects</Link>
+            <Link to="/about/" className="btn-ghost">About Me</Link>
           </div>
         </motion.div>
       </section>
@@ -43,7 +43,7 @@ export default function Home() {
       <section className={styles.projectsSection}>
         <div className={styles.sectionHeader}>
           <h2>Featured Projects</h2>
-          <Link to="/projects" className={styles.seeAll}>See all →</Link>
+          <Link to="/projects/" className={styles.seeAll}>See all →</Link>
         </div>
         {loading ? (
           <p style={{ color: 'var(--muted)' }}>Loading…</p>
