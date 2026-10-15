@@ -24,6 +24,10 @@ describe('truncate', () => {
   it('treats missing text as empty', () => {
     expect(truncate(undefined)).toBe('')
   })
+
+  it('drops punctuation left before the ellipsis', () => {
+    expect(truncate('alpha, beta, gamma, delta', 13)).toBe('alpha…')
+  })
 })
 
 describe('pageMeta', () => {

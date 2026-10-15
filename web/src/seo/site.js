@@ -39,7 +39,7 @@ export function truncate(text, max = 160) {
   if (clean.length <= max) return clean
   const cut = clean.slice(0, max - 1)
   const space = cut.lastIndexOf(' ')
-  return (space > 0 ? cut.slice(0, space) : cut) + '…'
+  return (space > 0 ? cut.slice(0, space) : cut).replace(/[\s,;:–—-]+$/, '') + '…'
 }
 
 // React Router uses only the deepest matching route's meta, so every page returns the full set
